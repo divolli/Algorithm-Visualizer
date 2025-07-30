@@ -10,10 +10,10 @@ I'm a student who has always struggled to deeply understand how algorithms work.
 
 This project is:
 
-- 🔍 A personal **learning sandbox**  
-- 💡 A tool for others who learn better visually  
-- 🎥 A potential resource for **teachers and video lectures**  
-- 🧱 A playground for experimenting with algorithm logic and performance  
+- 🔍 A personal **learning sandbox**
+- 💡 A tool for others who learn better visually
+- 🎥 A potential resource for **teachers and video lectures**
+- 🧱 A playground for experimenting with algorithm logic and performance
 
 I hope this project can inspire other learners or act as a useful **interactive source** for anyone studying algorithms.
 
@@ -38,17 +38,17 @@ Gradient descent, regression, clustering, neural networks
 
 
 ```
-algorithm_visualizer/  
-├── core/ # Engine, visualizer base class, utility modules  
-├── algorithms/  
-│ ├── sorting/ # Bubble, Merge, Quick, etc.  
-│ ├── graphs/ # BFS, DFS, Dijkstra, A*  
-│ ├── ai_ml/ # Gradient descent, K-means, NN  
-│ └── finance/ # SMA, MACD, strategies  
-├── sfml_ui/ # Window handling, drawing, UI controls  
-├── assets/ # Fonts, icons, themes  
-├── tests/ # Testable algorithm logic (optional)  
-├── data/ # CSV input or simulation data  
+algorithm_visualizer/
+├── core/ # Engine, visualizer base class, utility modules
+├── algorithms/
+│ ├── sorting/ # Bubble, Merge, Quick, etc.
+│ ├── graphs/ # BFS, DFS, Dijkstra, A*
+│ ├── ai_ml/ # Gradient descent, K-means, NN
+│ └── finance/ # SMA, MACD, strategies
+├── sfml_ui/ # Window handling, drawing, UI controls
+├── assets/ # Fonts, icons, themes
+├── tests/ # Testable algorithm logic (optional)
+├── data/ # CSV input or simulation data
 ├── dev_log.md
 └── README.md
 ```
@@ -69,12 +69,12 @@ Feel free to follow along, leave ideas, or just read it if you're curious how th
 
 ## 🚀 Features (WIP)
 
-- Real-time animation of algorithm steps  
-- Step-by-step execution & speed control  
-- Sorting with color-coded visual feedback  
-- Graph traversal and pathfinding animations  
-- Finance chart overlays and indicator drawing  
-- ML training visuals like convergence, loss graphs  
+- Real-time animation of algorithm steps
+- Step-by-step execution & speed control
+- Sorting with color-coded visual feedback
+- Graph traversal and pathfinding animations
+- Finance chart overlays and indicator drawing
+- ML training visuals like convergence, loss graphs
 - UI with buttons, sliders, toggles using SFML
 
 ---
@@ -84,7 +84,6 @@ Feel free to follow along, leave ideas, or just read it if you're curious how th
 - **C++17 / C++20**
 - **SFML** — Simple and Fast Multimedia Library
 - **CMake** — Cross-platform build system
-- *(Optional)*: ImGui-SFML, Catch2, CSV parsers
 
 ---
 
@@ -106,7 +105,7 @@ make
 
 ## 🎥 Screenshots / GIFs
 
-Coming soon as I complete modules!  
+Coming soon as I complete modules!
 
 ---
 
