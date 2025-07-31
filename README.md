@@ -47,7 +47,7 @@ algorithm_visualizer/
 │ └── finance/ # SMA, MACD, strategies
 ├── sfml_ui/ # Window handling, drawing, UI controls
 ├── assets/ # Fonts, icons, themes
-├── tests/ # Testable algorithm logic (optional)
+├── tests/ # Testable algorithm logic
 ├── data/ # CSV input or simulation data
 ├── dev_log.md
 └── README.md
