@@ -9,6 +9,7 @@ find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 # Where your source files live
 add_executable(algorithm_visualizer
     core/main.cpp
+    core/VisualizeEngine.cpp
     # (I’ll add more .cpp/.hpp as I go)
 )
 
