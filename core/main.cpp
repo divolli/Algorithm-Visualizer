@@ -2,7 +2,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/VideoMode.hpp>
-#include "VisualizeEngine.hpp"
+#include "visualizer/VisualizeEngine.hpp"
 
 int main(void){
   // sfml window
