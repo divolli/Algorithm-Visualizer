@@ -4,7 +4,7 @@
 #include <SFML/Window/VideoMode.hpp>
 #include <memory>
 #include "visualizer/VisualizeEngine.hpp"
-#include "includes/BubbleSortVisualizer.hpp"
+#include "../algorithms/includes/BubbleSortVisualizer.hpp"
 
 int main(void){
   // sfml window
@@ -17,6 +17,7 @@ int main(void){
   sf::Clock clock;
   VisualizeEngine engine;
   engine.set_visualizer(std::make_unique<BubbleSortVisualizer>());
+  engine.currentVisualizer->SetRandomData(144, 1, 1000);
   // main loop
   while (window.isOpen()){
     // Input events

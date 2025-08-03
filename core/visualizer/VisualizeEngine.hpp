@@ -8,8 +8,8 @@
 class VisualizeEngine
 {
   private:
-    std::unique_ptr<AlgorithmVisualizer> currentVisualizer = nullptr;
   public:
+    std::unique_ptr<AlgorithmVisualizer> currentVisualizer = nullptr;
     void handleInput(const sf::Event& event);
     void update(float dt);
     void reset();

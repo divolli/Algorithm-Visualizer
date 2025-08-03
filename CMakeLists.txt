@@ -11,6 +11,7 @@ set(APP_NAME "main")
 add_executable(${APP_NAME}
     core/main.cpp
     core/visualizer/VisualizeEngine.cpp
+    algorithms/sorting/BubbleSortVisualizer.cpp
     # (I’ll add more .cpp/ as I go)
 )
 
