@@ -5,10 +5,13 @@
 
 class BubbleSortVisualizer : public AlgorithmVisualizer {
   private:
-
+    std::vector<int> data{};
   public:
-    void update(float dt);
-    void render(sf::RenderTarget& target) const;
-    void handleInput(const sf::Event& event);
-    void reset();
+    void update(float dt) override;
+    void render(sf::RenderTarget& target) const override;
+    void handleInput(const sf::Event& event) override;
+    void reset() override;
+
+    void SetRandomData(size_t length, int min, int max); // for random vals
+    void SetData(const std::vector<int>& UserData); // for user input
 };
