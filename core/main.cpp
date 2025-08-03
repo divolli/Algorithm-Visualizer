@@ -2,7 +2,9 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/VideoMode.hpp>
+#include <memory>
 #include "visualizer/VisualizeEngine.hpp"
+#include "includes/BubbleSortVisualizer.hpp"
 
 int main(void){
   // sfml window
@@ -14,6 +16,7 @@ int main(void){
   // measure frame timing
   sf::Clock clock;
   VisualizeEngine engine;
+  engine.set_visualizer(std::make_unique<BubbleSortVisualizer>());
   // main loop
   while (window.isOpen()){
     // Input events

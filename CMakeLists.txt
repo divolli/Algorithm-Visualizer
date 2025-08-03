@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
-project(AlgorithmVisualizer LANGUAGES CXX) # Project name is AlgorithmVisualizer, but your executable is 'main'
+project(AlgorithmVisualizer LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(SFML 2.5 COMPONENTS Graphics Window System REQUIRED) # Use capitalized components as per SFML standard
+find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
 set(APP_NAME "main")
 
@@ -15,13 +15,10 @@ add_executable(${APP_NAME}
 )
 
 target_include_directories(${APP_NAME} PRIVATE
-    ${CMAKE_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/core
+    ${CMAKE_SOURCE_DIR}/algorithms
 )
 
 target_link_libraries(${APP_NAME} PRIVATE
-    SFML::Graphics
-    SFML::Window
-    SFML::System
+    sfml-graphics sfml-window sfml-system
 )
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
