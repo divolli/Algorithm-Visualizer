@@ -12,6 +12,7 @@ add_executable(${APP_NAME}
     core/main.cpp
     core/visualizer/VisualizeEngine.cpp
     algorithms/sorting/BubbleSortVisualizer.cpp
+    sfml_ui/UI.cpp
     # (I’ll add more .cpp/ as I go)
 )
 

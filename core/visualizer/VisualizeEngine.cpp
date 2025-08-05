@@ -41,3 +41,17 @@ void VisualizeEngine::set_visualizer(std::unique_ptr<AlgorithmVisualizer> NewVis
 
   currentVisualizer = std::move(NewVisualizer);
 }
+
+
+void VisualizeEngine::SetRandomData(size_t length, int min, int max){
+  if (currentVisualizer){
+      currentVisualizer->SetRandomData(length, min, max);
+  }
+}
+
+
+void VisualizeEngine::SetData(const std::vector<int>& UserData){
+  if (currentVisualizer){
+      currentVisualizer->SetData(UserData);
+  }
+}
