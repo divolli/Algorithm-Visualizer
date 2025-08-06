@@ -1,22 +1,43 @@
 #pragma once
 #include "../../core/visualizer/AlgorithmVisualizer.hpp"
-#include <SFML/Graphics.hpp>
-#include <SFML/Window/Event.hpp>
+#include <vector>
 
 class BubbleSortVisualizer : public AlgorithmVisualizer {
-  private:
-    std::vector<int> data{};
-    size_t idx = 0, jdx = 0;
-    int max_data_value = 0;
-    bool sortingComplete = false;
-    float delayTimer = 0.f;
-    float delayBetweenSteps = 0.05f;
-  public:
-    void render(sf::RenderTarget& target) const override;
+private:
+    size_t outerIndex = 0;      // idx -> outerIndex (more descriptive)
+    size_t innerIndex = 0;      // jdx -> innerIndex
+    float delayTimer = 0.0f;
+
+    // Animation state
+    bool isComparing = false;
+    bool isSwapping = false;
+
+public:
+    // Core virtual methods
     void handleInput(const sf::Event& event) override;
     void update(float dt) override;
+    void render(sf::RenderTarget& target) const override;
     void reset() override;
 
-    void SetRandomData(size_t length, int min, int max) override; // for random vals
-    void SetData(const std::vector<int>& UserData) override; // for user input
+    // Data management
+    void SetRandomData(size_t length, int min, int max) override;
+    void SetData(const std::vector<int>& userData) override;
+
+    // Information methods
+    VisualizationInfo getVisualizationInfo() const override;
+    std::string getAlgorithmName() const override { return "Bubble Sort"; }
+    void setSpeed(float speedMultiplier) override;
+    void pause() override;
+    void resume() override;
+    void step() override;
+
+    // State queries
+    const std::vector<int>& getCurrentData() const override { return data; }
+    bool isComplete() const override { return currentState == AlgorithmState::Completed; }
+    bool isPaused() const override { return currentState == AlgorithmState::Paused; }
+
+private:
+    void performOneStep();
+    void updateHighlighting();
+    float getCurrentDelay() const { return baseDelay / speedMultiplier; }
 };

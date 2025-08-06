@@ -1,20 +1,41 @@
 #pragma once
-
 #include "AlgorithmVisualizer.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <memory>
 
-class VisualizeEngine
-{
-  private:
+class VisualizeEngine {
+private:
     std::unique_ptr<AlgorithmVisualizer> currentVisualizer = nullptr;
-  public:
-    void handleInput(const sf::Event& event); // hande user input logic
-    void update(float dt); // Main algorithm implementation
-    void reset(); // Resets class data
-    void render(sf::RenderTarget& target) const; // Render algorithm
-    void set_visualizer(std::unique_ptr<AlgorithmVisualizer> NewVisualizer); // Pointer to a new class visualiser
-    void SetRandomData(size_t length, int min, int max); // set random data
-    void SetData(const std::vector<int>& UserData); // set data from user
+    float globalSpeedMultiplier = 1.0f;
+
+public:
+    // Core functionality
+    void handleInput(const sf::Event& event);
+    void update(float dt);
+    void reset();
+    void render(sf::RenderTarget& target) const;
+
+    // Visualizer management
+    void set_visualizer(std::unique_ptr<AlgorithmVisualizer> newVisualizer);
+
+    // Data management
+    void SetRandomData(size_t length, int min, int max);
+    void SetData(const std::vector<int>& userData);
+
+    // New control methods
+    void setSpeed(float speedMultiplier);
+    void pause();
+    void resume();
+    void step(); // Execute one step
+
+    // Information retrieval
+    VisualizationInfo getVisualizationInfo() const;
+    std::string getCurrentAlgorithmName() const;
+    bool hasVisualizer() const { return currentVisualizer != nullptr; }
+    bool isComplete() const;
+    bool isPaused() const;
+
+    // Get current data state (for external analysis or debugging)
+    const std::vector<int>& getCurrentData() const;
 };

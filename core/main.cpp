@@ -9,72 +9,127 @@
 #include "../algorithms/includes/BubbleSortVisualizer.hpp"
 #include "../sfml_ui/UI.hpp"
 
+int main(void) {
+    // SFML window
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Algorithm Visualizer");
+    window.setFramerateLimit(90);
 
-enum class AppState {
-  MainMenu,
-  Visualizing
-};
+    // Font
+    sf::Font font;
+    if (!font.loadFromFile("../assets/MonoRegular.ttf")) {
+        std::cout << "Font file not found\n";
+        return -1;
+    }
 
+    // Measure frame timing
+    sf::Clock clock;
+    sf::Clock visualizationTimer; // Timer for algorithm visualization
 
-int main(void){
-  // sfml window
-  sf::RenderWindow window(sf::VideoMode(1280, 720), "Algorithm Visualizer");
+    // Initialize UI Manager
+    UIManager uiManager(font, window.getSize());
 
-  // AppState
-  AppState currentState = AppState::MainMenu;
+    // Initialize Visualization Engine
+    VisualizeEngine engine;
+    bool isVisualizationActive = false;
 
-  // Limit framerate
-  window.setFramerateLimit(90);
+    // MAIN LOOP
+    while (window.isOpen()) {
+        sf::Event event;
 
-  // Font
-  sf::Font font;
-  if (!font.loadFromFile("../assets/WhiteCapel.ttf")){
-    std::cout << "Font file not found\n";
-    return -1;
-  }
+        // INPUT LOOP
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
 
-  // measure frame timing
-  sf::Clock clock;
-  VisualizeEngine engine;
-  engine.set_visualizer(std::make_unique<BubbleSortVisualizer>());
-  engine.SetRandomData(75, -1000, 1000);
+            // Handle UI events
+            UIResult uiResult = uiManager.handleEvent(event, window);
 
-  // Main screen
-  MainMenuUI mainMenu(font, window.getSize());
+            // Process UI actions
+            switch (uiResult.action) {
+                case UIAction::SelectCategory:
+                    uiManager.showAlgorithmSelection(uiResult.category);
+                    break;
 
-  // MAIN LOOP
-  while (window.isOpen()){
-    sf::Event event;
+                case UIAction::SelectAlgorithm:
+                    // Initialize the algorithm based on selection
+                    switch (uiResult.algorithm) {
+                        case AlgorithmType::BubbleSort:
+                            engine.set_visualizer(std::make_unique<BubbleSortVisualizer>());
+                            engine.SetRandomData(75, -1000, 1000);
+                            uiManager.setAlgorithmName("Bubble Sort");
+                            break;
+                        // Add more algorithms here as you implement them
+                        default:
+                            break;
+                    }
+                    uiManager.showVisualization(uiResult.algorithm);
+                    isVisualizationActive = true;
+                    visualizationTimer.restart();
+                    break;
 
-    // INPUT LOOP
-    while (window.pollEvent(event)){
-      if (event.type == sf::Event::Closed) window.close();
-      //inut in menu
-      if (currentState == AppState::MainMenu) {
-        mainMenu.handleEvent(event, window);
+                case UIAction::GoBack:
+                    if (isVisualizationActive) {
+                        // Going back from visualization to algorithm selection
+                        // We need to know which category we came from - you might want to store this
+                        uiManager.showAlgorithmSelection(AlgorithmCategory::Sorting); // Default for now
+                        isVisualizationActive = false;
+                    } else {
+                        // Going back to main menu
+                        uiManager.showMainMenu();
+                    }
+                    break;
 
-        if (mainMenu.getSelectedCategory() != AlgorithmCategory::None){
-          // User picked a category - switch state
-          currentState = AppState::Visualizing;
+                case UIAction::Reset:
+                    if (isVisualizationActive) {
+                        engine.reset();
+                        visualizationTimer.restart();
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
+            // Pass events to visualization engine if active
+            if (isVisualizationActive) {
+                engine.handleInput(event);
+            }
+        } // END INPUT LOOP
+
+        // Time since last frame
+        float dt = clock.restart().asSeconds();
+
+        // Update UI
+        uiManager.update(dt);
+
+        // Update visualization if active
+        if (isVisualizationActive) {
+            engine.update(dt);
+
+            // Update UI with current visualization info
+            float currentTime = visualizationTimer.getElapsedTime().asSeconds();
+            uiManager.setTimer(currentTime);
+
+            // You can add more dynamic updates here, like:
+            // uiManager.setOperationText(engine.getCurrentOperation());
         }
-      } else if (currentState == AppState::Visualizing){
-        engine.handleInput(event);
-      }
-    }//END INPUT LOOP
 
-    // time since last frame
-    float dt = clock.restart().asSeconds();
-    if (currentState == AppState::Visualizing) engine.update(dt);
+        // RENDER
+        window.clear(sf::Color(30, 30, 30));
 
-    // Render
-    window.clear(sf::Color(30,30,30));
-    if (currentState == AppState::MainMenu)
-      engine.render(window);
-    else
-      engine.render(window);
+        if (isVisualizationActive) {
+            // Render visualization first (background)
+            engine.render(window);
+            // Then render UI overlay
+            uiManager.render(window);
+        } else {
+            // Just render UI for menu screens
+            uiManager.render(window);
+        }
 
-    window.display();
-  }
-  return 0;
+        window.display();
+    }
+
+    return 0;
 }
-
