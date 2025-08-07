@@ -1,19 +1,17 @@
 # 🧠 C++ Algorithm Visualizer using SFML
 
-A modular, real-time visualizer for over 60 of the most important and widely-used algorithms across **Computer Science**, **Finance**, and **Machine Learning / AI**, built entirely in **C++** using **SFML**.
+A modular, real-time visualizer for the most important and widely-used algorithms across **Computer Science**, **Finance**, and **Machine Learning / AI**, built entirely in **C++** using **SFML**.
 
 ---
 
 ## 📘 About the Project
 
-I'm a student who has always struggled to deeply understand how algorithms work. Instead of just memorizing pseudo-code or watching abstract lectures, I decided to **build this visualizer** — not only to **teach myself** algorithms by coding them from scratch, but also to **see them in motion**.
+I'm a student who has always struggled to understand how algorithms work deeply. Instead of just memorizing pseudo-code or watching abstract lectures, I decided to **build this visualizer** — not only to **teach myself** algorithms by coding them from scratch, but also to **see them in motion**.
 
 This project is:
 
 - 🔍 A personal **learning sandbox**
 - 💡 A tool for others who learn better visually
-- 🎥 A potential resource for **teachers and video lectures**
-- 🧱 A playground for experimenting with algorithm logic and performance
 
 I hope this project can inspire other learners or act as a useful **interactive source** for anyone studying algorithms.
 
@@ -46,9 +44,6 @@ algorithm_visualizer/
 │ ├── ai_ml/ # Gradient descent, K-means, NN
 │ └── finance/ # SMA, MACD, strategies
 ├── sfml_ui/ # Window handling, drawing, UI controls
-├── assets/ # Fonts, icons, themes
-├── tests/ # Testable algorithm logic
-├── data/ # CSV input or simulation data
 ├── dev_log.md
 └── README.md
 ```
