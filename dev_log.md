@@ -37,13 +37,14 @@ Welcome to the ongoing development log of my project: a C++ SFML-based algorithm
 
 
 ### 🖋 Notes
-After trying to implement the visualizer with a GUI, I found it a bit tedious — building all the welcome, main, and visualization windows felt like too much. I have to admit that, for now, it’s either beyond my current skill level, or more likely, beyond my current dedication. I just don’t want to spend a week or two creating a full graphical user interface. And a poorly designed welcome screen isn’t something I’d be happy with either.  
+  After trying to implement the visualizer with a GUI, I found it a bit tedious — building all the welcome, main, and visualization windows felt like too much. I have to admit that, for now, it’s either beyond my current skill level or, more likely, beyond my current dedication. I just don’t want to spend a week or two creating a full graphical user interface. And a poorly designed welcome screen isn’t something I’d be happy with either.  
 So, if I can’t do it well, I’d rather try something else — in this case, a CUI (Console User Interface). It’ll be much easier to build and interact with, and I can spend far less time on that part while focusing on the actual goal: implementing algorithm visualization. That’s the whole point of this project — to learn more about algorithms.  
 Later, I might add a proper GUI on top of the core CUI logic once the foundation is solid. 
 
-Was this week unproductive? Maybe. But at least I built a bare-bones version of the project (actually two versions!) and learned **a lot** about C++ — especially classes, virtual functions, and abstract classes. I also worked quite a bit with SFML, although I did fall into the “AI trap”: it gave me a lot of copy-pasteable code, so I didn’t learn as much as I could have.  
+  Was this week unproductive? Maybe. But at least I built a bare-bones version of the project (actually two versions!) and learned **a lot** about C++ — especially classes, virtual functions, and abstract classes. I also worked quite a bit with SFML, although I fell into the “AI trap”: it provided me a lot of copy-pasteable code, so I didn’t learn as much as I could have.  
 I’ve decided to reduce AI usage to a bare minimum: no more copy-pasting code, not even if I ask. Hints only! Otherwise, I get lazy — and the AI sometimes hallucinates anyway.
 
-Anyway, to avoid going off track — let’s just say this was more of a *setup & figure-it-out* week. I got a general understanding and idea of what the project will look like, so I’m not stopping here. I’m writing this on Day 6, with one day left. I probably won’t get much more done.
+  Anyway, to avoid going off track — let’s just say this was more of a *setup & figure-it-out* week. I got a general understanding and idea of what the project will look like, so I’m not stopping here. I’m writing this on Day 6, with one day left. I probably won’t get much more done.
+
 ---
 
