@@ -6,19 +6,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
-set(APP_NAME "main")
+set(APP_NAME "jj")
 
 add_executable(${APP_NAME}
-    core/main.cpp
-    core/visualizer/VisualizeEngine.cpp
-    algorithms/sorting/BubbleSortVisualizer.cpp
-    sfml_ui/UI.cpp
+    main.cpp
+    ParserInput.cpp
+    SortingAlgorithms.cpp
     # (I’ll add more .cpp/ as I go)
-)
-
-target_include_directories(${APP_NAME} PRIVATE
-    ${CMAKE_SOURCE_DIR}/core
-    ${CMAKE_SOURCE_DIR}/algorithms
 )
 
 target_link_libraries(${APP_NAME} PRIVATE

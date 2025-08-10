@@ -1,6 +1,6 @@
 # 🧠 C++ Algorithm Visualizer using SFML
 
-A modular, real-time visualizer for over 60 of the most important and widely-used algorithms across **Computer Science**, **Finance**, and **Machine Learning / AI**, built entirely in **C++** using **SFML**.
+A modular, real-time visualizer for the most important and widely-used algorithms across **Computer Science**, **Finance**, and **Machine Learning / AI**, built entirely in **C++** using **SFML**.
 
 ---
 
