@@ -36,16 +36,7 @@ Gradient descent, regression, clustering, neural networks
 
 
 ```
-algorithm_visualizer/
-├── core/ # Engine, visualizer base class, utility modules
-├── algorithms/
-│ ├── sorting/ # Bubble, Merge, Quick, etc.
-│ ├── graphs/ # BFS, DFS, Dijkstra, A*
-│ ├── ai_ml/ # Gradient descent, K-means, NN
-│ └── finance/ # SMA, MACD, strategies
-├── sfml_ui/ # Window handling, drawing, UI controls
-├── dev_log.md
-└── README.md
+just in progress
 ```
 
 

@@ -1,0 +1,64 @@
+========================
+ Algorithm Visualizer
+========================
+
+DESCRIPTION
+    Algorithm Visualizer is a learning tool that allows you to see how different algorithms work step-by-step.
+
+USAGE
+    1. Choose an algorithm category:
+         S - Sorting Algorithms
+         G - Graph Algorithms
+         F - Financial Algorithms
+         A - Machine Learning / AI Algorithms
+
+    2. Enter the algorithm name and data size:
+         Example: bubble s
+         Data size options:
+             s - small
+             m - medium
+             l - large
+
+COMMANDS
+    --help       Show this help menu
+
+
+EXAMPLES
+    bubble m     Visualize Bubble Sort with medium data set
+    dijkstra s   Visualize Dijkstra's Algorithm with small data set
+
+NOTES
+    - Data size affects the number of elements and visualization speed.
+    - Some algorithms may not support all data sizes.
+
+
+ALGORITHMS:
+    Sorting:
+        bubble       Bubble Sort
+        insertion    Insertion Sort
+        selection    Selection Sort
+        merge        Merge Sort
+        quick        Quick Sort
+        heap         Heap Sort
+
+    Graph:
+        dijkstra     Dijkstra's Shortest Path
+        astar        A* Pathfinding
+        bfs          Breadth-First Search
+        dfs          Depth-First Search
+        kruskal      Kruskal's Minimum Spanning Tree
+        prim         Prim's Minimum Spanning Tree
+
+    Financial:
+        sma          Simple Moving Average
+        ema          Exponential Moving Average
+        macd         Moving Average Convergence Divergence
+        bband        Bollinger Bands
+        var          Value at Risk
+
+    Machine Learning / AI:
+        perceptron   Single-Layer Perceptron
+        knn          K-Nearest Neighbors
+        kmeans       K-Means Clustering
+        svm          Support Vector Machine
+        linearreg    Linear Regression
