@@ -12,6 +12,7 @@ class Visualizer {
     virtual void render(sf::RenderTarget& target) const = 0;
     virtual void handleInput(const sf::Event& event) = 0;
     virtual void update(float dt) = 0;
+    virtual void initializeData(size_t dataSize) = 0;
 };
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -37,20 +38,22 @@ class SortingVisualizer: public Visualizer {
   public:
     std::unique_ptr<SortingAlgorithm> algorithm = nullptr;
 
-    void render(sf::RenderTarget& target) const {
+    void render(sf::RenderTarget& target) const override {
       if (algorithm) algorithm->render(target);
     }
 
-    void handleInput(const sf::Event& event) {
+    void handleInput(const sf::Event& event) override {
       if (algorithm) algorithm->handleInput(event);
     }
 
-    void update(float dt) {
+    void update(float dt) override {
       if (algorithm) algorithm->update(dt);
     }
 
-    void SetRandomData(size_t length, int min, int max) {
-      if (algorithm) algorithm->SetRandomData(length, min, max);
+    void initializeData(size_t dataSize) override {
+      if (algorithm) {
+        algorithm->SetRandomData(dataSize, 1, 1000);
+      }
     }
 };
 
@@ -66,7 +69,7 @@ class GraphAlgorithm {
     virtual void render(sf::RenderTarget& target) const = 0;
     virtual void handleInput(const sf::Event& event) = 0;
     virtual void update(float dt) = 0;
-    virtual void SetRandomData(size_t length, int min, int max) = 0;
+    virtual void SetRandomData(size_t length, int min, int max) = 0; // place holder from sorting algorithm
 };
 
 
@@ -75,20 +78,22 @@ class GraphVisualizer: public Visualizer {
   public:
     std::unique_ptr<GraphAlgorithm> algorithm = nullptr;
 
-    void render(sf::RenderTarget& target) const {
+    void render(sf::RenderTarget& target) const override{
       if (algorithm) algorithm->render(target);
     }
 
-    void handleInput(const sf::Event& event) {
+    void handleInput(const sf::Event& event) override {
       if (algorithm) algorithm->handleInput(event);
     }
 
-    void update(float dt) {
+    void update(float dt) override {
       if (algorithm) algorithm->update(dt);
     }
 
-    void SetRandomData(size_t length, int min, int max) {
-      if (algorithm) algorithm->SetRandomData(length, min, max);
+    void initializeData(size_t dataSize) override {
+      if (algorithm) {
+        algorithm->SetRandomData(dataSize, 1, 1000); // placeholder
+      }
     }
 };
 
@@ -103,7 +108,7 @@ class FinanceAlgorithm {
     virtual void render(sf::RenderTarget& target) const = 0;
     virtual void handleInput(const sf::Event& event) = 0;
     virtual void update(float dt) = 0;
-    virtual void SetRandomData(size_t length, int min, int max) = 0;
+    virtual void SetRandomData(size_t length, int min, int max) = 0; // place holder from sorting algorithm
 };
 
 
@@ -112,20 +117,22 @@ class FinanceVisualizer: public Visualizer {
   public:
     std::unique_ptr<FinanceAlgorithm> algorithm = nullptr;
 
-    void render(sf::RenderTarget& target) const {
+    void render(sf::RenderTarget& target) const override {
       if (algorithm) algorithm->render(target);
     }
 
-    void handleInput(const sf::Event& event) {
+    void handleInput(const sf::Event& event) override {
       if (algorithm) algorithm->handleInput(event);
     }
 
-    void update(float dt) {
+    void update(float dt) override {
       if (algorithm) algorithm->update(dt);
     }
 
-    void SetRandomData(size_t length, int min, int max) {
-      if (algorithm) algorithm->SetRandomData(length, min, max);
+    void initializeData(size_t dataSize) override {
+      if (algorithm) {
+        algorithm->SetRandomData(dataSize, 1, 1000); // placeholder
+      }
     }
 };
 
@@ -140,7 +147,7 @@ class MLAlgorithm {
     virtual void render(sf::RenderTarget& target) const = 0;
     virtual void handleInput(const sf::Event& event) = 0;
     virtual void update(float dt) = 0;
-    virtual void SetRandomData(size_t length, int min, int max) = 0;
+    virtual void SetRandomData(size_t length, int min, int max) = 0; // place holder from sorting algorithm
 };
 
 
@@ -149,20 +156,22 @@ class MLVisualizer: public Visualizer {
   public:
     std::unique_ptr<MLAlgorithm> algorithm = nullptr;
 
-    void render(sf::RenderTarget& target) const {
+    void render(sf::RenderTarget& target) const override {
       if (algorithm) algorithm->render(target);
     }
 
-    void handleInput(const sf::Event& event) {
+    void handleInput(const sf::Event& event) override {
       if (algorithm) algorithm->handleInput(event);
     }
 
-    void update(float dt) {
+    void update(float dt) override {
       if (algorithm) algorithm->update(dt);
     }
 
-    void SetRandomData(size_t length, int min, int max) {
-     if (algorithm) algorithm->SetRandomData(length, min, max);
+    void initializeData(size_t dataSize) override {
+      if (algorithm) {
+        algorithm->SetRandomData(dataSize, 1, 1000); // placeholder
+      }
     }
 };
 

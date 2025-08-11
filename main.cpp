@@ -44,8 +44,8 @@ int main(){
   // Verify input
   int check = verify_algorithm(chosen_alg, running_algorithm);
   if (check == -1) return -1;
-
-  // Main window loop if all been chosen okay ?
+  std::cout << "Starting Visualization...\n";
+  // Main window loop
 
   return 0;
 }

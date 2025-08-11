@@ -15,7 +15,7 @@ private:
     bool isFinished() const;
 
 public:
-    // Override all pure virtual functions from SortingAlgorithm
+    // Override
     void render(sf::RenderTarget& target) const override;
     void handleInput(const sf::Event& event) override;
     void update(float dt) override;
