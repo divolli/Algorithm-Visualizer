@@ -86,7 +86,7 @@ Once I have this global input handling in place, I’ll only need to work on spe
 
 I also considered implementing input methods directly in the main visualizer class, but currently, I only have a pointer to the exact algorithm in the category visualizer class. I designed it this way in case I create a GUI version, as category segregation might make that easier. However, this means I’d need to paste the same input-handling logic into all category classes. Maybe that’s even better — for example, in the Graphs category, I might add more specific controls.  
 
-Long story short: for now, I think the program is in a good state (at least for a first version 😄). The main current issue (aside from the low-quality visuals) is handling window resizing. I should address and fix this behavior.  
+Long story short: for now, I think the program is in a good state (at least for a first project). The main current issue (aside from the low-quality visuals) is handling window resizing. I should address and fix this behavior.  
 
 For next week, I’ll focus on polishing user interaction logic, reviewing the overall program structure, and — if I have time — implementing another algorithm. Thankfully, it’s much easier now: I just need to write the main algorithm visualizer logic, paste the declaration in `.hpp` and the definition in `.cpp`, add the algorithm to the hashmap, and that’s it.  
 
