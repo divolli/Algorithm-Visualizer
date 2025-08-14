@@ -3,26 +3,26 @@
 
 
 class BubbleSort : public SortingAlgorithm {
-private:
+  private:
     size_t outerIndex = 0;
     size_t innerIndex = 0;
-
     bool isComparing = false;
     bool isSwapping = false;
 
-    // Helper methods
-    void performBubbleSortStep();
-    bool isFinished() const;
+    // Store previous states for backward stepping
+    struct SortState {
+      size_t outerIndex, innerIndex;
+      std::vector<int> dataSnapshot;
+      bool isComparing, isSwapping;
+    };
+    std::vector<SortState> stateHistory;
 
-public:
-    // Override
+  public:
     void render(sf::RenderTarget& target) const override;
-    void handleInput(const sf::Event& event) override;
     void update(float dt) override;
-    void SetRandomData(size_t length, int min, int max) override;
+    void performStep(bool forward) override;
+    void reset() override;
+};
 
-    // Additional methods
-    void reset();
-};;
 
 

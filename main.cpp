@@ -1,3 +1,4 @@
+#include <SFML/Graphics/RenderWindow.hpp>
 #include <iostream>
 #include <ostream>
 #include "ParserInput.hpp"
@@ -24,8 +25,8 @@ int main(){
 
   // Set category
   Category category;
-  Visualizer* running_algorithm = nullptr;
-  selected_category(opt, running_algorithm, category);
+  Visualizer* MainAlgorithm = nullptr;
+  selected_category(opt, MainAlgorithm, category);
 
   std::cout
   << "Perfect!\n"
@@ -42,10 +43,44 @@ int main(){
   std::string chosen_alg{};
   std::getline(std::cin, chosen_alg);
   // Verify input
-  int check = verify_algorithm(chosen_alg, running_algorithm);
+  int check = verify_algorithm(chosen_alg, MainAlgorithm);
   if (check == -1) return -1;
   std::cout << "Starting Visualization...\n";
   // Main window loop
+
+  sf::RenderWindow window(sf::VideoMode({1180,720}), "Visualizer");
+  window.setPosition({750,150});
+  window.setVerticalSyncEnabled(true);
+  // Clock for timing
+  sf::Clock clock;
+
+  // Main loop
+  while (window.isOpen()) {
+    sf::Event event;
+    while (window.pollEvent(event)) {
+      if (event.type == sf::Event::Closed) {
+        window.close();
+      } else if (event.key.code == sf::Keyboard::Escape || event.key.code == sf::Keyboard::Q){
+        window.close();
+      }
+
+      // Handle input
+      MainAlgorithm->handleInput(event);
+    }
+
+    // Update
+    float deltaTime = clock.restart().asSeconds();
+    MainAlgorithm->update(deltaTime);
+
+    // Clear
+    window.clear(sf::Color::Black);
+
+    // Draw
+    MainAlgorithm->render(window);
+
+    // Display
+    window.display();
+  }
 
   return 0;
 }
