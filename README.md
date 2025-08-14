@@ -1,12 +1,12 @@
 # 🧠 C++ Algorithm Visualizer using SFML
 
-A modular, real-time visualizer for the most important and widely-used algorithms across **Computer Science**, **Finance**, and **Machine Learning / AI**, built entirely in **C++** using **SFML**.
+A modular, real-time visualizer for the most widely-used algorithms across **Computer Science**, **Finance**, and **Machine Learning / AI**, built in **C++** using **SFML**.
 
 ---
 
 ## 📘 About the Project
 
-I'm a student who has always struggled to understand how algorithms work deeply. Instead of just memorizing pseudo-code or watching abstract lectures, I decided to **build this visualizer** — not only to **teach myself** algorithms by coding them from scratch, but also to **see them in motion**.
+I'm a student who has always been interested in how algorithms work deeply. Instead of just memorizing pseudo-code or watching abstract lectures, I decided to **build this visualizer** — not only to **teach myself** algorithms by coding them from scratch, but also to **see them in motion**.
 
 This project is:
 
@@ -25,10 +25,10 @@ This is a **solo learning project**, built in C++ with love (and a lot of debugg
 Sorting, graphs, dynamic programming, trees, recursion
 
 ### 🟢 Finance / Trading
-Technical indicators, strategy simulations, Monte Carlo methods
+In progress
 
 ### 🧠 Machine Learning & AI
-Gradient descent, regression, clustering, neural networks
+In progress
 
 ---
 
@@ -59,9 +59,6 @@ Feel free to follow along, leave ideas, or just read it if you're curious how th
 - Step-by-step execution & speed control
 - Sorting with color-coded visual feedback
 - Graph traversal and pathfinding animations
-- Finance chart overlays and indicator drawing
-- ML training visuals like convergence, loss graphs
-- UI with buttons, sliders, toggles using SFML
 
 ---
 
@@ -77,8 +74,8 @@ Feel free to follow along, leave ideas, or just read it if you're curious how th
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/algorithm-visualizer-cpp.git
-cd algorithm-visualizer-cpp
+git clone https://github.com/divolli/algorithm_visualization.git
+cd algorithm_visualization
 
 # Build with CMake
 mkdir build && cd build
