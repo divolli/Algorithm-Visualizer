@@ -50,44 +50,43 @@ I’ve decided to reduce AI usage to a bare minimum: no more copy-pasting code, 
 
 ## 🗓️ Week 2, 08–14.08.2025
 
-### ✔️ What I Did
-- [ ] User text interface
-- [ ] Input handling
-- [ ] Main program logic and behavior
-- [ ] BubbleSort visualization
+- [X] User text interface  
+- [X] Input handling  
+- [X] Main program logic and behavior  
+- [X] BubbleSort visualization  
 
 ### 📚 What I Learned
-- More on inheritance
-- Program logic
-- A little more SFML
-- I’m pretty sure that after implementing the BubbleSort visualization, I have it “on the tip of my toes”
+- More on inheritance  
+- Program logic  
+- A little more SFML  
+- I’m pretty sure that after implementing the BubbleSort visualization, I have it “on the tip of my toes”  
 
 ### ❗️Challenges & Struggles
-- I spent a lot of time thinking about how to store algorithms and initialize them after user input. For now, I think I’ve come up with a good solution.
-- Some problems occurred with handling input (described in the notes).
-- I still have issues with resizing the window — I need to do something about it.
+- I spent a lot of time thinking about how to store algorithms and initialize them after user input. For now, I think I’ve come up with a good solution.  
+- Some problems occurred with handling input (described in the notes).  
+- I still have issues with resizing the window — I need to do something about it.  
 
 ### 🔜 What’s Next
-- [ ] Heapsort?
-- [ ] Properly handle window resizing
-- [ ] Review user interaction in case of bugs or potential improvements
-- [ ] Quicksort?
+- [ ] Heapsort?  
+- [ ] Properly handle window resizing  
+- [ ] Review user interaction in case of bugs or potential improvements  
+- [ ] Quicksort?  
 
 ### 🖋 Notes
-I’ve implemented a program structure that I’m quite happy with for now. To make the program fully modular, I just need to refine input handling. I’m considering implementing a friend class to manage global controls, such as:
+I’ve implemented a program structure that I’m quite happy with for now. To make the program fully modular, I just need to refine input handling. I’m considering implementing a friend class to manage global controls, such as:  
 
-- **Space** – stop/play
-- **Arrow keys** – step-by-step visualization
-- **R** – reset
-- **F / S** – faster / slower
-- **Q** – quit
+- **Space** – stop/play  
+- **Arrow keys** – step-by-step visualization  
+- **R** – reset  
+- **F / S** – faster / slower  
+- **Q** – quit  
 
-Once I have this global input handling in place, I’ll only need to work on specific algorithm visualizations. After that, adding them to the `algomap` hashmap will be straightforward.
+Once I have this global input handling in place, I’ll only need to work on specific algorithm visualizations. After that, adding them to the `algomap` hashmap will be straightforward.  
 
-I also considered implementing input methods directly in the main visualizer class, but currently, I only have a pointer to the exact algorithm in the category visualizer class. I designed it this way in case I create a GUI version, as category segregation might make that easier. However, this means I’d need to paste the same input-handling logic into all category classes. Maybe that’s even better — for example, in the Graphs category, I might add more specific controls.
+I also considered implementing input methods directly in the main visualizer class, but currently, I only have a pointer to the exact algorithm in the category visualizer class. I designed it this way in case I create a GUI version, as category segregation might make that easier. However, this means I’d need to paste the same input-handling logic into all category classes. Maybe that’s even better — for example, in the Graphs category, I might add more specific controls.  
 
-Long story short: for now, I think the program is in a good state (at least for a first project). The main current issue (aside from the low-quality visuals) is handling window resizing. I should address and fix this behavior.
+Long story short: for now, I think the program is in a good state (at least for a first project). The main current issue (aside from the low-quality visuals) is handling window resizing. I should address and fix this behavior.  
 
-For next week, I’ll focus on polishing user interaction logic, reviewing the overall program structure, and — if I have time — implementing another algorithm. Thankfully, it’s much easier now: I just need to write the main algorithm visualizer logic, paste the declaration in `.hpp` and the definition in `.cpp`, add the algorithm to the hashmap, and that’s it.
+For next week, I’ll focus on polishing user interaction logic, reviewing the overall program structure, and — if I have time — implementing another algorithm. Thankfully, it’s much easier now: I just need to write the main algorithm visualizer logic, paste the declaration in `.hpp` and the definition in `.cpp`, add the algorithm to the hashmap, and that’s it.  
 
 Oh, and I also need to rewrite the help file and update it with more information — just remembered!
