@@ -1,5 +1,5 @@
 #pragma once
-#include "Visualizations.hpp"
+#include "../Visualizer/Visualizations.hpp"
 
 
 class BubbleSort : public SortingAlgorithm {

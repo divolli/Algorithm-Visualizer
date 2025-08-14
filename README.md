@@ -6,7 +6,9 @@ A modular, real-time visualizer for the most widely-used algorithms across **Com
 
 ## 📘 About the Project
 
+
 I'm a student who has always been interested in how algorithms work deeply. Instead of just memorizing pseudo-code or watching abstract lectures, I decided to **build this visualizer** — not only to **teach myself** algorithms by coding them from scratch, but also to **see them in motion**.
+
 
 This project is:
 

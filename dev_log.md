@@ -50,7 +50,6 @@ I’ve decided to reduce AI usage to a bare minimum: no more copy-pasting code, 
 
 ## 🗓️ Week 2, 08–14.08.2025
 
-### ✔️ What I Did
 - [X] User text interface  
 - [X] Input handling  
 - [X] Main program logic and behavior  

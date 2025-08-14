@@ -1,8 +1,8 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <iostream>
 #include <ostream>
-#include "ParserInput.hpp"
-#include "Visualizations.hpp"
+#include "../include/HelperParser/ParserInput.hpp"
+#include "../include/Visualizer/Visualizations.hpp"
 
 
 int main(){
@@ -86,6 +86,7 @@ int main(){
     window.display();
   }
 
+  std::cout << "See you later!" << std::endl;
   return 0;
 }
 
