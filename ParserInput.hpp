@@ -26,7 +26,7 @@ const std::unordered_map<std::string, AlgoSetter> Algorithms_Map = {
 // helper struct
 struct ParsedInput {
     std::string algorithm;
-    char size = 'm'; // default to medium
+    char size = 'm'; // default
     bool valid = false;
 };
 

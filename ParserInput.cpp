@@ -124,11 +124,8 @@ int verify_algorithm(std::string& chosen_alg, Visualizer* current_category){
       std::cout << "Algorithm " << parsed.algorithm << " set successfully!\n";
       std::cout << "Sample size: " << getSampleSize(parsed.size) << " elements\n";
 
-      // Set random data if it's a sorting visualizer
-      SortingVisualizer* sortVis = dynamic_cast<SortingVisualizer*>(current_category);
-      if (sortVis && sortVis->algorithm) {
-          sortVis->SetRandomData(getSampleSize(parsed.size), 1, 1000);
-      }
+      // initialize data of current cuttegory
+      current_category->initializeData(getSampleSize(parsed.size));
 
       return 0; // Success
     } else {

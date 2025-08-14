@@ -1,121 +1,172 @@
 #include "SortingAlgorithms.hpp"
-#include "SortingAlgorithms.hpp"
-#include <random>
-#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/System/Vector2.hpp>
+#include <algorithm>
 
-void BubbleSort::handleInput(const sf::Event& event) {
-    // Algorithm-specific input handling can go here
-    // For now, let's handle space bar to pause/resume
-    if (event.type == sf::Event::KeyPressed) {
-        if (event.key.code == sf::Keyboard::Space) {
-            // Toggle pause state or step through algorithm
-        }
-    }
-}
-
-void BubbleSort::update(float dt) {
-    delayTimer += dt;
-
-    // Only proceed if enough time has passed (for visualization speed control)
-    const float DELAY_THRESHOLD = 0.1f; // 100ms delay between steps
-
-    if (delayTimer >= DELAY_THRESHOLD && !isFinished()) {
-        performBubbleSortStep();
-        delayTimer = 0.0f;
-    }
-}
 
 void BubbleSort::render(sf::RenderTarget& target) const {
-    // Basic bar rendering for bubble sort visualization
-    if (data.empty()) return;
+  // Get the size of the window
+  sf::Vector2u WindowSize = target.getSize();
+  unsigned int WindowWidth = WindowSize.x;
+  unsigned int WindowHeight = WindowSize.y;
 
-    const float windowWidth = 800.0f;  // Assume window width
-    const float windowHeight = 600.0f; // Assume window height
-    const float barWidth = windowWidth / data.size();
-    const float maxHeight = windowHeight * 0.8f;
+  float BarSpacing = 6.0f; // 6 pixels for gap
+  float BarWidth = (WindowWidth - ((data.size() - 1) * BarSpacing)) / static_cast<float>(data.size()); // bar width will depend on width of the window and gap between bars
+  float MaxHeight = WindowHeight * 0.8f; // will correct it later maybe?
 
-    // Find max value for scaling
-    int maxVal = *std::max_element(data.begin(), data.end());
+  // max for scaling
+  float MaxVal = *std::max_element(data.begin(), data.end());
 
-    for (size_t i = 0; i < data.size(); ++i) {
-        sf::RectangleShape bar;
-        float barHeight = (static_cast<float>(data[i]) / maxVal) * maxHeight;
 
-        bar.setSize(sf::Vector2f(barWidth - 2, barHeight));
-        bar.setPosition(i * barWidth, windowHeight - barHeight);
+  // Loop for render each bar
+  for (auto i = 0; i < data.size(); ++i) {
+    sf::RectangleShape bar;
 
-        // Color coding for visualization
-        if (isComparing && (i == outerIndex || i == innerIndex)) {
-            bar.setFillColor(sf::Color::Red);    // Currently comparing
-        } else if (isSwapping && (i == outerIndex || i == innerIndex)) {
-            bar.setFillColor(sf::Color::Yellow); // Currently swapping
-        } else if (i >= data.size() - outerIndex) {
-            bar.setFillColor(sf::Color::Green);  // Already sorted
-        } else {
-            bar.setFillColor(sf::Color::Blue);   // Unsorted
-        }
+    // Setting size for each bar
+    float BarHeight = (static_cast<float>(data[i]) / MaxVal) * MaxHeight;
+    bar.setSize(sf::Vector2f(BarWidth, BarHeight));
 
-        target.draw(bar);
+    // Setting position for each bar
+    float xPos = (i * BarWidth) + (i * BarSpacing);
+    float yPos = WindowHeight - BarHeight;
+
+    // Add jumping effect for comparing bars
+    if ((isComparing || isSwapping) && (i == innerIndex || i == innerIndex + 1)) {
+      yPos -= 20;
     }
+
+    bar.setPosition(xPos, yPos);
+
+    // Highlight
+    if (isComparing && i == innerIndex) {
+      bar.setFillColor(sf::Color(128, 0, 128));     // Right comparing bar Purple
+    }
+    else if (isComparing && i == innerIndex + 1) {
+      bar.setFillColor(sf::Color(255, 165, 0));      // Left comparing bar Orange
+    }
+    else if (isSwapping && i == innerIndex) {
+      bar.setFillColor(sf::Color(128, 0, 128));     // Right swapping bar Purple
+    }
+    else if (isSwapping && i == innerIndex + 1) {
+      bar.setFillColor(sf::Color(255, 165, 0));  // Left swapping bar Orange
+    }
+    else if (isComparing && i == innerIndex -1) {
+      bar.setFillColor(sf::Color(255, 165, 0));   // Orange for last smaller bar
+    }
+    else if (i >= data.size() - outerIndex || isFinished) {
+      bar.setFillColor(sf::Color::Green);    // Sorted elements
+    }
+    else {
+      bar.setFillColor(sf::Color::White);    // Unsorted elements
+    }
+
+    target.draw(bar);
+  }
 }
+
+
+
+void BubbleSort::performStep(bool forward) {
+  if (forward) {
+    // Save current state for potential backward step
+    SortState currentState;
+    currentState.innerIndex = innerIndex;
+    currentState.outerIndex = outerIndex;
+    currentState.dataSnapshot = data;
+    currentState.isComparing = isComparing;
+    currentState.isSwapping = isSwapping;
+    stateHistory.push_back(currentState);
+
+    // Limit history size to prevent memory issues
+    if (stateHistory.size() > 100) {
+      stateHistory.erase(stateHistory.begin());
+    }
+
+    // Perform one step of bubble sort
+    if (isFinished) {
+      return; // Nothing more to do
+    }
+
+    if (isComparing) {
+      if (data[innerIndex] > data[innerIndex + 1]) {
+        isSwapping = true;
+        isComparing = false;
+      } else {
+        innerIndex++;
+        if (innerIndex >= data.size() - 1 - outerIndex) {
+          isComparing = false;
+        }
+      }
+    }
+    else if (isSwapping) {
+      std::swap(data[innerIndex], data[innerIndex + 1]);
+      isSwapping = false;
+      innerIndex++;
+
+      // Check if inner loop is complete
+      if (innerIndex >= data.size() - 1 - outerIndex) {
+        isComparing = false;  // Will be handled in the "else" block
+      } else {
+        isComparing = true;   // Continue with next comparison
+      }
+    }
+    else {
+      // Inner loop done - move to next outer iteration
+      if (innerIndex == data.size() - 1 - outerIndex) {
+        outerIndex ++;
+        innerIndex = 0;
+        // Check if algorithm is complete
+        if (outerIndex >= data.size() - 1) {
+          isFinished = true;
+          return;
+        }
+      }
+
+      // Start comparing current adjacent pair
+      if (innerIndex < data.size() - 1 - outerIndex) {
+        isComparing = true;
+      }
+    }
+  }
+  else {
+    // Backward step - restore previous state
+    if (!stateHistory.empty()) {
+      SortState prevState = stateHistory.back();
+      stateHistory.pop_back();
+
+      // Restore all state variables
+      outerIndex = prevState.outerIndex;
+      innerIndex = prevState.innerIndex;
+      data = prevState.dataSnapshot;
+      isComparing = prevState.isComparing;
+      isSwapping = prevState.isSwapping;
+      isFinished = false;
+    }
+  }
+}
+
+
 
 void BubbleSort::reset(){
-    outerIndex = 0;
-    innerIndex = 0;
-    isComparing = false;
-    isSwapping = false;
+  outerIndex = 0;
+  innerIndex = 0;
+  isComparing = false;
+  isSwapping = false;
+  isFinished = false;
+  stateHistory.clear();
+  delayTimer = 0.0f;
+}
+
+
+
+void BubbleSort::update(float dt) {
+  if (isPaused || isFinished) return;
+
+  delayTimer += (dt * speed);
+
+  const float STEP_DELAY = 0.5f;
+  if (delayTimer >= STEP_DELAY) {
     delayTimer = 0.0f;
-}
-
-void BubbleSort::SetRandomData(size_t length, int min, int max) {
-    if (length < 2) {
-        throw std::invalid_argument("Length must be at least 2 for sorting visualization.");
-    }
-
-    if (min > max) std::swap(min, max);
-
-    data.clear();
-    data.reserve(length);
-
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> distrib(min, max);
-
-    for (size_t i = 0; i < length; ++i) {
-        data.push_back(distrib(gen));
-    }
-
-    reset(); // Reset state when new data is set
-}
-
-// The core bubble sort logic
-void BubbleSort::performBubbleSortStep() {
-    if (isFinished()) return;
-
-    isComparing = true;
-
-    // Bubble sort algorithm logic
-    if (innerIndex < data.size() - 1 - outerIndex) {
-        if (data[innerIndex] > data[innerIndex + 1]) {
-            // Need to swap
-            isSwapping = true;
-            std::swap(data[innerIndex], data[innerIndex + 1]);
-        }
-        innerIndex++;
-    } else {
-        // End of inner loop, move to next outer iteration
-        outerIndex++;
-        innerIndex = 0;
-        isSwapping = false;
-    }
-
-    // Check if sorting is complete
-    if (outerIndex >= data.size() - 1) {
-        isComparing = false;
-        isSwapping = false;
-    }
-}
-
-bool BubbleSort::isFinished() const {
-    return outerIndex >= data.size() - 1;
+    performStep(true);
+  }
 }
