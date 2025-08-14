@@ -33,8 +33,7 @@ int main(){
   << "Write algorithm name to visualize and data sample size:\n"
   << "Sizes: s (small), m (medium), l (large) - default is medium\n"
   << "Examples: 'bubble s' or just 'bubble'\n"
-  << "--help to see more information and a list of all algorithms.\n"
-  << "For quit press - Q"
+  << "--help to see more information and a list of all algorithms."
   << std::endl;
   // Clear the input buffer after reading char
   std::cin.ignore();
