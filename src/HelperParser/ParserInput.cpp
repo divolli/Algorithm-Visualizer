@@ -85,7 +85,7 @@ int verify_algorithm(std::string& chosen_alg, Visualizer* current_category){
 
     // Check for help
     if (chosen_alg == "--help") {
-      std::ifstream help_file("../help.txt");
+      std::ifstream help_file("../src/HelperParser/help.txt");
       if (help_file) {
         std::cout << help_file.rdbuf() << '\n';
       } else {
