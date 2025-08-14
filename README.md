@@ -1,19 +1,17 @@
 # 🧠 C++ Algorithm Visualizer using SFML
 
-A modular, real-time visualizer for the most important and widely-used algorithms across **Computer Science**, **Finance**, and **Machine Learning / AI**, built entirely in **C++** using **SFML**.
+A modular, real-time visualizer for the most widely-used algorithms across **Computer Science**, **Finance**, and **Machine Learning / AI**, built in **C++** using **SFML**.
 
 ---
 
 ## 📘 About the Project
 
-I'm a student who has always struggled to deeply understand how algorithms work. Instead of just memorizing pseudo-code or watching abstract lectures, I decided to **build this visualizer** — not only to **teach myself** algorithms by coding them from scratch, but also to **see them in motion**.
+I'm a student who has always wanted to deeply understand how algorithms work. Instead of just memorizing pseudo-code or watching abstract lectures, I decided to **build this visualizer** — not only to **teach myself** algorithms by coding them from scratch, but also to **see them in motion**.
 
 This project is:
 
 - 🔍 A personal **learning sandbox**
 - 💡 A tool for others who learn better visually
-- 🎥 A potential resource for **teachers and video lectures**
-- 🧱 A playground for experimenting with algorithm logic and performance
 
 I hope this project can inspire other learners or act as a useful **interactive source** for anyone studying algorithms.
 
@@ -27,10 +25,10 @@ This is a **solo learning project**, built in C++ with love (and a lot of debugg
 Sorting, graphs, dynamic programming, trees, recursion
 
 ### 🟢 Finance / Trading
-Technical indicators, strategy simulations, Monte Carlo methods
+In progress
 
 ### 🧠 Machine Learning & AI
-Gradient descent, regression, clustering, neural networks
+In progress
 
 ---
 
@@ -61,9 +59,6 @@ Feel free to follow along, leave ideas, or just read it if you're curious how th
 - Step-by-step execution & speed control
 - Sorting with color-coded visual feedback
 - Graph traversal and pathfinding animations
-- Finance chart overlays and indicator drawing
-- ML training visuals like convergence, loss graphs
-- UI with buttons, sliders, toggles using SFML
 
 ---
 
@@ -79,8 +74,8 @@ Feel free to follow along, leave ideas, or just read it if you're curious how th
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/algorithm-visualizer-cpp.git
-cd algorithm-visualizer-cpp
+git clone https://github.com/divolli/algorithm_visualization.git
+cd algorithm_visualization
 
 # Build with CMake
 mkdir build && cd build
