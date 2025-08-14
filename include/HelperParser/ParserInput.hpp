@@ -1,7 +1,7 @@
 #pragma once
 
-#include "SortingAlgorithms.hpp"
-#include "Visualizations.hpp"
+#include "../Algorithms/SortingAlgorithms.hpp"
+#include "../Visualizer/Visualizations.hpp"
 #include <unordered_map>
 #include <functional>
 

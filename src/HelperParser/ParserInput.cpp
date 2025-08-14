@@ -1,4 +1,4 @@
-#include "ParserInput.hpp"
+#include "../../include/HelperParser/ParserInput.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -42,10 +42,10 @@ void selected_category(const char& option, Visualizer*& current_category, Catego
 
 size_t getSampleSize(char size) {
   switch (size) {
-    case 's': return 25;   // small
-    case 'm': return 50;  // medium
-    case 'l': return 100;  // large
-    default:  return 50;  // default to medium
+    case 's': return 35;   // small
+    case 'm': return 60;  // medium
+    case 'l': return 120;  // large
+    default:  return 60;  // default to medium
   }
 }
 
