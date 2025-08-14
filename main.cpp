@@ -45,9 +45,14 @@ int main(){
   // Verify input
   int check = verify_algorithm(chosen_alg, MainAlgorithm);
   if (check == -1) return -1;
-  std::cout << "Starting Visualization...\n";
-  // Main window loop
+  std::cout
+  << "Starting Visualization...\n"
+  << "Use keys for navigating:\n"
+  << "F - faster, S - slower, Q - quit, R - reset\n"
+  << "SPACE - stop/play, <- step backwards, -> step forward"
+  << std::endl;
 
+  // Main window loop
   sf::RenderWindow window(sf::VideoMode({1180,720}), "Visualizer");
   window.setPosition({750,150});
   window.setVerticalSyncEnabled(true);
