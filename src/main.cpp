@@ -13,14 +13,15 @@ int main(){
       << "2. Graph Algorithms (press G)\n"
       << "3. Financial Algorithms (press F)\n"
       << "4. ML/AI Algorithms (press A)\n"
-      << "For quit press - Q"
+      << "--help to see more information and a list of all algorithms.\nFor quit press - Q\n"
       << std::endl;
 
   // Read option
-  char opt{};
-  std::cin >> opt;
+  std::string option{};
+  std::getline(std::cin, option);
+
   // Verify input
-  verify_option(opt);
+  char opt = verify_option(option);
   if (opt == 'Q') return -1; // QUIT
 
   // Set category
@@ -29,14 +30,12 @@ int main(){
   selected_category(opt, MainAlgorithm, category);
 
   std::cout
-  << "Perfect!\n"
+  << "\nPerfect!\n"
   << "Write algorithm name to visualize and data sample size:\n"
   << "Sizes: s (small), m (medium), l (large) - default is medium\n"
   << "Examples: 'bubble s' or just 'bubble'\n"
   << "--help to see more information and a list of all algorithms."
   << std::endl;
-  // Clear the input buffer after reading char
-  std::cin.ignore();
 
   // Read algorithm to visualize
   std::string chosen_alg{};

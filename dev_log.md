@@ -90,3 +90,10 @@ Long story short: for now, I think the program is in a good state (at least for 
 For next week, I’ll focus on polishing user interaction logic, reviewing the overall program structure, and — if I have time — implementing another algorithm. Thankfully, it’s much easier now: I just need to write the main algorithm visualizer logic, paste the declaration in `.hpp` and the definition in `.cpp`, add the algorithm to the hashmap, and that’s it.  
 
 Oh, and I also need to rewrite the help file and update it with more information — just remembered!
+
+---
+
+I'm going to take a break from this project until September 14, probably. I need to prepare for exams, and this month I have more hours at my part-time job, so I'll be concentrating on the C language and, mainly, on memory handling.
+
+---
+

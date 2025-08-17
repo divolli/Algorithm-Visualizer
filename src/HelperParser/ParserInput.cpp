@@ -3,14 +3,15 @@
 #include <fstream>
 
 
-void verify_option(char& option){
-  option = std::toupper(option);
+char verify_option(std::string& option){
+  option = std::toupper(option[0]);
   const std::string check = "SGFAQ";
-  while (check.find(option) == std::string::npos){
+  while (check.find(option[0]) == std::string::npos){
     std::cout << "It seems that you are provided wrong input.\nPlease select a correct category or quit." << std::endl;
-    std::cin >> option;
-    option = std::toupper(option);
+    getline(std::cin, option);
+    option = std::toupper(option[0]);
   }
+  return option[0];
 }
 
 
@@ -85,7 +86,7 @@ int verify_algorithm(std::string& chosen_alg, Visualizer* current_category){
 
     // Check for help
     if (chosen_alg == "--help") {
-      std::ifstream help_file("../help.txt");
+      std::ifstream help_file("../src/HelperParser/help.txt");
       if (help_file) {
         std::cout << help_file.rdbuf() << '\n';
       } else {

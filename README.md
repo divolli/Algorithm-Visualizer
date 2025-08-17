@@ -38,7 +38,24 @@ In progress
 
 
 ```
-just in progress
+include/
+├── Algorithms/
+│ └── SortingAlgorithms.hpp
+├── HelperParser/
+│ └── HelperParser.hpp
+└── Visualizer/
+└── Visualizations.hpp
+
+src/
+├── Algorithms/
+│ └── SortingAlgorithms.cpp
+├── HelperParser/
+│ ├── help.txt
+│ └── ParserInput.cpp
+└── main.cpp
+
+dev_log.md
+README.md
 ```
 
 
@@ -60,7 +77,6 @@ Feel free to follow along, leave ideas, or just read it if you're curious how th
 - Real-time animation of algorithm steps
 - Step-by-step execution & speed control
 - Sorting with color-coded visual feedback
-- Graph traversal and pathfinding animations
 
 ---
 

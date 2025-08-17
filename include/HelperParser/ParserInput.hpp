@@ -32,7 +32,7 @@ struct ParsedInput {
 
 // Helper main function
 void selected_category(const char& option, class Visualizer*& current_category, Category& category);
-void verify_option(char& option);
+char verify_option(std::string& option);
 int verify_algorithm(std::string& algorithm, Visualizer* current_category);
 size_t getSampleSize(char size);
 ParsedInput parseAlgorithmInput(const std::string& input);
