@@ -44,7 +44,7 @@ include/
 ├── HelperParser/
 │ └── HelperParser.hpp
 └── Visualizer/
-└── Visualizations.hpp
+  └── Visualizations.hpp
 
 src/
 ├── Algorithms/
